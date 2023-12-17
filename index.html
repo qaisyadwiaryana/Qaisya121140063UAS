@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UAS Pemrograman Web 121140063</title>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans';
+    }
+    body{
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(120deg,#2980b9, #8e44ad);
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    }
+    .center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+    padding: 15px;
+    line-height: 25px;
+    }
+    </style>
+</head>
+<body>
+    <div class="center">
+    <form id="form" onsubmit="return submitForm(event)">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br>
+        <label for="check">Siap Lulus:</label>
+        <input type="checkbox" id="check" name="check" required><br>
+        <label for="radio">Pilih Bidang Keilmuan:</label><br>
+        <input type="radio" id="radio1" name="radio" value=" RPLSI " required>
+        <label for="radio1">RPLSI</label><br>
+        <input type="radio" id="radio2" name="radio" value=" KASPER " required>
+        <label for="radio2">KASPER</label><br>
+        <input type="radio" id="radio3" name="radio" value=" AIDE " required>
+        <label for="radio3">AIDE</label><br>
+        <input type="submit" value="Submit">
+    </form>
+    <table id="data">
+    <script>
+        function submitForm(event) {
+        event.preventDefault(); // Mencegah submit form seperti biasa
+        // Proses validasi dan pengolahan data
+        // Contoh: Validasi hanya untuk input text dan checkbox
+        let nama = document.getElementById('nama').value;
+        let check = document.getElementById('check').checked;
+        if (nama && check) {
+            // Validasi berhasil, lakukan proses pengolahan data
+            let radio = document.querySelector('input[name="radio"]:checked').value;
+            // Tambahkan data ke tabel
+            let table = document.getElementById('data');
+            let row = table.insertRow();
+            let cell1 = row.insertCell();
+            let cell2 = row.insertCell();
+            let cell3 = row.insertCell();
+            cell1.textContent = nama;
+            cell2.textContent = radio;
+            cell3.textContent = 'Berhasil ditambahkan';
+        } else {
+            alert('Mohon lengkapi form dengan benar');
+        }
+    }
+    </script>
+    </table>
+    </div>
+</body>
+</html>
